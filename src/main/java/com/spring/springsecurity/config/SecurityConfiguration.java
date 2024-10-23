@@ -3,6 +3,7 @@ package com.spring.springsecurity.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -16,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfiguration {
 
     @Bean
@@ -30,26 +32,26 @@ public class SecurityConfiguration {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails user = User.withUsername("user").password("{noop}password").roles("USER").build();
-        UserDetails admin = User.withUsername("admin").password("{noop}password").roles("ADMIN").build();
+        UserDetails user = User.withUsername("user").password("{noop}user").roles("USER").build();
+        UserDetails admin = User.withUsername("admin").password("{noop}admin").roles("ADMIN").build();
         return new InMemoryUserDetailsManager(user, admin);
     }
 
-
-    @Bean
-    public UserDetailsService userDetailsServiceWithPasswordEncoder() throws Exception {
-        return new InMemoryUserDetailsManager(
-                User.withUsername("user")
-                        .password(passwordEncoder().encode("password"))
-                        .roles("USER")
-                        .build()
-        );
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    //User Configuration with Password Encoder
+//    @Bean
+//    public UserDetailsService userDetailsServiceWithPasswordEncoder() throws Exception {
+//        return new InMemoryUserDetailsManager(
+//                User.withUsername("user2")
+//                        .password(passwordEncoder().encode("password"))
+//                        .roles("USER")
+//                        .build()
+//        );
+//    }
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
 
 

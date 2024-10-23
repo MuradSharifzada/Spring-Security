@@ -14,7 +14,7 @@ public class HomeResourceController {
         return ("<h1>Hello</h1>");
     }
 
-    @PreAuthorize("hasRole('ADMINRo')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")
     public String admin() {
         return ("<h1>Welcome Admin</h1>");

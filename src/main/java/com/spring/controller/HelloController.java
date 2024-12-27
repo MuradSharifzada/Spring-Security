@@ -1,4 +1,4 @@
-package com.spring.springsecurity.controller;
+package com.spring.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.Data;

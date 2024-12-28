@@ -17,6 +17,10 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 /src/main/resources/application.properties
+/.gitattributes
+/settings.gradle
+/HELP.md
+/pom.xml
 
 ### IntelliJ IDEA ###
 .idea
